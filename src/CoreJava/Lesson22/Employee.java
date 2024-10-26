@@ -9,10 +9,10 @@ public class Employee {
         this.age = age;
         this.experience = experience;
     }
-    void eat(){
+    public void eat(){
         System.out.println("Eat");
     }
-    void sleep(){
+    public void sleep(){
         System.out.println("Sleep");
     }
 }
