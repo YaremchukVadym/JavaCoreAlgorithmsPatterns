@@ -16,7 +16,12 @@ public class Test2 {
         list.add(emp4);
 
         System.out.println("Before sorting: \n" + list);
-        Collections.sort(list);
+        Collections.sort(list, new Comparator<Employee>() {
+            @Override
+            public int compare(Employee o1, Employee o2) {
+                return 0;
+            }
+        });
         System.out.println("After sorting: \n" + list);
 
         Arrays.sort(new Employee[]{emp1, emp2, emp3, emp4});
@@ -26,7 +31,7 @@ public class Test2 {
 
 }
 
-class Employee implements Comparable<Employee> {
+class Employee {
     int id;
     String name;
     String surname;
@@ -49,14 +54,14 @@ class Employee implements Comparable<Employee> {
                 '}';
     }
 
-    @Override
-    public int compareTo(Employee anotherName) {
-        int result = this.salary - anotherName.salary;
-        if(result == 0){
-            result = this.name.compareTo(anotherName.name);
-        }
-        return result;
-    }
+//    @Override
+//    public int compareTo(Employee anotherName) {
+//        int result = this.salary - anotherName.salary;
+//        if(result == 0){
+//            result = this.name.compareTo(anotherName.name);
+//        }
+//        return result;
+//    }
 
 //    @Override
 //    public int compareTo(Employee o) {
@@ -74,4 +79,25 @@ class Employee implements Comparable<Employee> {
 //        }
 //    }
 
+}
+
+class IdComparator implements Comparator<Employee> {
+    @Override
+    public int compare(Employee emp1, Employee emp2) {
+        if (emp1.id == emp2.id) {
+            return 0;
+        } else if (emp1.id < emp2.id) {
+            return -1;
+        } else {
+            return 1;
+        }
+
+    }
+}
+class NameComparator implements Comparator<Employee> {
+    @Override
+    public int compare(Employee emp1, Employee emp2) {
+      return emp1.name.compareTo(emp2.name);
+
+    }
 }
