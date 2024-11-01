@@ -54,7 +54,7 @@ class StudentInfo {
 
         StudentInfo st = new StudentInfo();
 
-        st.testStudents(list, (Student s) -> {return s.avgGrade;} > 8.5);
+       // st.testStudents(list, (Student s) -> {return s.avgGrade;} > 8.5);
 
 
     }
