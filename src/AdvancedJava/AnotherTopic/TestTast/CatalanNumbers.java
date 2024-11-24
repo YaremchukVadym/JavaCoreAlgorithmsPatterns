@@ -1,4 +1,4 @@
-package AdvancedJava.AnotherTopic;
+package AdvancedJava.AnotherTopic.TestTast;
 
 import java.util.Scanner;
 
