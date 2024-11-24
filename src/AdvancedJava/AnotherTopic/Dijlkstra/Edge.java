@@ -4,7 +4,7 @@ public class Edge {
     Vertex start, end;
     double weight;
 
-    public Edge(Vertex start, Vertex end, double weight) {
+    public Edge(double weight, Vertex start, Vertex end ) {
         this.start = start;
         this.end = end;
         this.weight = weight;

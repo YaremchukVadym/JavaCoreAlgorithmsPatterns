@@ -8,11 +8,13 @@ public class Vertex implements Comparable<Vertex> {
     boolean visited;
     List<Edge> neighbours;
     double distance;
+    Vertex predecessor;
 
     public Vertex(String name){
         this.name = name;
         neighbours = new ArrayList<>();
         distance = Double.MAX_VALUE;
+        predecessor = null;
     }
 
     public void addNeighbour(Edge e){
@@ -41,6 +43,14 @@ public class Vertex implements Comparable<Vertex> {
 
     public void setDistance(double distance) {
         this.distance = distance;
+    }
+
+    public Vertex getPredecessor() {
+        return predecessor;
+    }
+
+    public void setPredecessor(Vertex predecessor) {
+        this.predecessor = predecessor;
     }
 
     @Override
