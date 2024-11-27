@@ -67,6 +67,8 @@ class Test{
                     }
                 });
 
+        info.testStudents(students, (Student p1) -> p1.age>22  );
+
 
 //        info.printStudentsOverGrade(students, 7);
 //        System.out.println("--------------------------------------------");
