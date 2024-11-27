@@ -3,32 +3,40 @@ package AdvancedJava.Lambda;
 import java.util.ArrayList;
 
 public class  StudentInfo {
-    public static void main(String[] args) {
 
-    }
-    void printStudentsOverGrade(ArrayList<Student> a1, double grade) {
-        for (Student s : a1) {
-            if(s.avgGrade>grade){
-                System.out.println(s);
+        void testStudents(ArrayList<Student> a1, StudentChecks sc){
+            for(Student s : a1){
+                if(sc.check(s)){
+                    System.out.println(s);
+                }
             }
         }
-    }
 
-    void printStudentsUnderAge(ArrayList<Student> a1, int  age) {
-        for (Student s : a1) {
-            if(s.age<age){
-                System.out.println(s);
-            }
-        }
-    }
 
-    void printStudentsMixCondition(ArrayList<Student> a1, int age, double grade, char sex) {
-        for (Student s : a1) {
-            if(s.avgGrade<grade && s.age<age && s.sex==sex){
-                System.out.println(s);
-            }
-        }
-    }
+
+//    void printStudentsOverGrade(ArrayList<Student> a1, double grade) {
+//        for (Student s : a1) {
+//            if(s.avgGrade>grade){
+//                System.out.println(s);
+//            }
+//        }
+//    }
+//
+//    void printStudentsUnderAge(ArrayList<Student> a1, int  age) {
+//        for (Student s : a1) {
+//            if(s.age<age){
+//                System.out.println(s);
+//            }
+//        }
+//    }
+//
+//    void printStudentsMixCondition(ArrayList<Student> a1, int age, double grade, char sex) {
+//        for (Student s : a1) {
+//            if(s.avgGrade<grade && s.age<age && s.sex==sex){
+//                System.out.println(s);
+//            }
+//        }
+//    }
 }
 
 class Test{
@@ -49,13 +57,34 @@ class Test{
         students.add(st6);
 
         StudentInfo info = new StudentInfo();
-        info.printStudentsOverGrade(students, 7);
+        info.testStudents(students, new CheckOverGrade());
         System.out.println("--------------------------------------------");
-        info.printStudentsUnderAge(students, 30);
-        System.out.println("--------------------------------------------");
-        info.printStudentsMixCondition(students, 26, 10, 'f');
+
+        info.testStudents(students, new StudentChecks() {
+                    @Override
+                    public boolean check(Student s) {
+                        return s.age>22;
+                    }
+                });
+
+
+//        info.printStudentsOverGrade(students, 7);
+//        System.out.println("--------------------------------------------");
+//        info.printStudentsUnderAge(students, 30);
+//        System.out.println("--------------------------------------------");
+//        info.printStudentsMixCondition(students, 26, 10, 'f');
 
     }
 
 }
 
+interface StudentChecks{
+    boolean check(Student s);
+}
+
+class CheckOverGrade implements StudentChecks{
+    @Override
+    public boolean check(Student s) {
+        return s.avgGrade>8;
+    }
+}
