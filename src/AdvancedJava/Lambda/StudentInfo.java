@@ -67,7 +67,10 @@ class Test{
                     }
                 });
 
-        info.testStudents(students, (Student p1) -> p1.age>22  );
+        info.testStudents(students, (Student p1) -> p1.age>22);
+
+        info.testStudents(students, (Student p2) -> p2.avgGrade>6);
+        info.testStudents(students, (Student p2) -> p2.avgGrade>6);
 
 
 //        info.printStudentsOverGrade(students, 7);
